@@ -3,7 +3,6 @@ obj[1] = "One";             // object with key->1 and value->One is initialized
 obj["1"] = "String One";    // the above object is overwritten by changing the key from 1 to "1" as Ja
                             //JavaScript assignes data types implicitly
 
-
 console.log(obj[1]);                   // It prints String One since the data type stored is already a string
 console.log(obj["1"]);                  // It prints the same as 1 and "1" are the same thing
 console.log(obj[1] === obj["1"]);       // The output is hence true
