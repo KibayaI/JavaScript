@@ -15,5 +15,3 @@ var library = [
     libraryID: 3245,
   },
 ];
-
-console.log(library.sort((a, b) => a[0].localeCompare(b)));

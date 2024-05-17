@@ -16,5 +16,10 @@ var library = [
   },
 ];
 
+let sorted = library.map((new_library) => ({
+  author: new_library.author,
+  title: new_library.title,
+  libraryID: new_library.libraryID,
+}));
 
-console.log(Object.keys(library[0]).sort())
+console.log(sorted);

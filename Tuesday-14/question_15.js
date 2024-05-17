@@ -8,8 +8,8 @@ let movie = {
 function pair(object) {
   arr = [Object.keys(object), Object.values(object)];
   for (let i = 0; i < 4; i++) {
-    arra = [arr[[0]][i], arr[[1]][i]];
-    console.log(arra);
+    paired_array = [arr[[0]][i], arr[[1]][i]];
+    console.log(paired_array);
   }
 }
 
