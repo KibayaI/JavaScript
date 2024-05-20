@@ -97,9 +97,45 @@ const users = [
 ];
 
 function social_media(users_array) {
-  let user_var = users_array.map((user) => {
-    return user.posts;
+  let active = [];
+  let post = [];
+  let Likes = [];
+  let total = 0;
+  users_array.map((UserArr) => {
+    post.push(UserArr.posts);
+    UserArr.posts.map((information) => {
+      const today = new Date();
+      const dayPosted = new Date(information.timestamp);
+      const dayDiff = (today - dayPosted) / (24 * 60 * 60 * 1000);
+      // console.log(dayDiff)
+      if (dayDiff < 7) {
+        active.push(UserArr.name);
+      }
+    });
   });
-  return user_var
+
+  const filterUsers = active.filter(
+    (user, index) => active.indexOf(user) === index
+  );
+  console.log("Active Users: " + filterUsers);
+
+  post.map((postarr) => {
+    postarr.map((popularPosts) => {
+      if (popularPosts.likes > 10) {
+        Likes.push(popularPosts.likes);
+        console.log(popularPosts);
+      }
+    });
+  });
+
+  total = Likes.reduce((prev, next) => prev + next);
+  const average = total / users.length;
+  console.log("Average likes : " + average);
+
+  let result_obj = {
+    number_of_active_users: filterUsers.length,
+    average_likes: average
+  }
+  console.log(result_obj)
 }
 console.log(social_media(users));
