@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Management App</title>
+  </head>
+  <body>
+    <script>
+      const empty = [];
+
+      const addedDataJSON = [
+        {
+          id: 1,
+          imageUrl:
+            "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          title: "Summer Music Festival",
+          price: 50,
+          date: "August 20, 2021",
+          location: "Central Park, New York City",
+          company: "Music Festivals Inc.",
+        },
+        {
+          id: 2,
+          imageUrl:
+            "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+          title: "Food and Wine Expo",
+          price: 75,
+          date: "September 25, 2021",
+          location: "Moscone Center, San Francisco",
+          company: "Food and Wine Events LLC",
+        },
+        {
+          id: 3,
+          imageUrl:
+            "https://images.unsplash.com/photo-1618519764620-7403abdbdfe9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          title: "Comic Con",
+          price: 35,
+          date: "October 15, 2021",
+          location: "Los Angeles Convention Center",
+          company: "Comic Con International",
+        },
+        {
+          id: 4,
+          imageUrl:
+            "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXJ0JTIwYW5kJTIwZGVzaWduJTIwZmFpcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+          title: "Art and Design Fair",
+          price: 20,
+          date: "November 12, 2021",
+          location: "Navy Pier, Chicago",
+          company: "Art and Design Expo LLC",
+        },
+        {
+          id: 5,
+          imageUrl:
+            "https://plus.unsplash.com/premium_photo-1661766479722-ddedc5dce339?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+          title: "Holiday Market",
+          price: 5,
+          date: "December 3, 2021",
+          location: "Union Square, New York City",
+          company: "Holiday Markets Inc.",
+        },
+        {
+          id: 6,
+          imageUrl:
+            "https://plus.unsplash.com/premium_photo-1661290419867-79072e8d5f00?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29uY2VydCUyMHBhcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+          title: "Concert in the Park",
+          price: 20,
+          date: "August 20, 2022",
+          location: "Central Park, New York City",
+          company: "Live Nation",
+        },
+        {
+          id: 7,
+          imageUrl:
+            "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          title: "Food and Wine Festival",
+          price: 50,
+          date: "September 15-18, 2022",
+          location: "Union Square, San Francisco",
+          company: "Taste of San Francisco",
+        },
+        {
+          id: 8,
+          imageUrl:
+            "https://plus.unsplash.com/premium_photo-1661602441396-67b89b6ac4d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          title: "Summer Beach Party",
+          price: 15,
+          date: "July 3, 2022",
+          location: "Venice Beach, Los Angeles",
+          company: "LA Beach Parties",
+        },
+        {
+          id: 9,
+          imageUrl:
+            "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          title: "Angular Nation Expo",
+          price: 35,
+          date: "October 1-3, 2022",
+          location: "Google Hall, San Fransico",
+          company: "ArtExpo NY",
+        },
+        {
+          id: 10,
+          imageUrl:
+            "https://images.unsplash.com/photo-1465310477141-6fb93167a273?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          title: "Sports and Adventure Expo",
+          price: 20,
+          date: "May 20-22, 2022",
+          location: "McCormick Place, Chicago",
+          company: "Google",
+        },
+      ];
+
+      function populate(obj) {
+        empty.push(obj);
+      }
+
+      populate(addedDataJSON[0]);
+      populate(addedDataJSON[1]);
+      populate(addedDataJSON[2]);
+      populate(addedDataJSON[3]);
+      populate(addedDataJSON[4]);
+      populate(addedDataJSON[5]);
+      populate(addedDataJSON[6]);
+      populate(addedDataJSON[7]);
+      populate(addedDataJSON[8]);
+      populate(addedDataJSON[9]);
+      populate(addedDataJSON[10]);
+      console.log(empty);
+
+
+
+      let counter = document.createElement("label");
+
+      async function addProducts() {
+        function populateProducts(object) {
+          //outer div
+          const container = document.createElement("div");
+          container.style.margin = "2rem .5rem 0";
+          container.style.padding = "1rem 0";
+          container.style.width = "90vw";
+          container.style.display = "grid";
+          container.style.alignContent = "center";
+          container.style.justifyItems = "center";
+          container.style.gridTemplateColumns = "repeat(3, 1fr)";
+          container.style.rowGap = "2rem";
+          document.body.appendChild(container);
+          const cart_redirect = document.createElement("a");
+          const img_redirect = document.createElement("img");
+          document.body.appendChild(cart_redirect);
+          cart_redirect.appendChild(img_redirect);
+          cart_redirect.style.position = "absolute";
+          cart_redirect.style.right = "0";
+          cart_redirect.style.top = "48px";
+          img_redirect.style.width = "100px";
+          cart_redirect.setAttribute("onclick", "second()");
+          cart_redirect.appendChild(counter);
+          counter.textContent = "0";
+          // decr.textContent = "-";
+          // incr.textContent = "+";
+
+          empty.map((obj) => {
+            //creating elements
+            const card = document.createElement("div");
+            const description = document.createElement("div");
+            const img = document.createElement("img");
+            const title = document.createElement("p");
+            const date = document.createElement("p");
+            const company = document.createElement("p");
+            const price = document.createElement("p");
+            const buy_btn = document.createElement("button");
+            const label = document.createElement("label");
+            const cart = document.createElement("img");
+            const link = document.createElement("a");
+            buy_btn.setAttribute("id", `buy${obj.id}`);
+
+            //styling elements
+            card.style.width = "400px";
+            card.style.height = "300px";
+            description.style.border = "solid black 2px";
+            card.style.textAlign = "center";
+            img.style.width = "400px";
+            img.style.height = "180px";
+            img.style.marginBottom = "-4px";
+            title.style.fontWeight = "800";
+            title.style.fontSize = "20px";
+            title.style.marginTop = "3px";
+            title.style.marginBottom = "3px";
+            date.style.marginTop = "3px";
+            date.style.marginBottom = "3px";
+            company.style.marginTop = "3px";
+            company.style.marginBottom = "3px";
+            price.style.marginTop = "3px";
+            price.style.marginBottom = "3px";
+            buy_btn.style.backgroundColor = "darkBlue";
+            buy_btn.style.marginTop = "0";
+            buy_btn.style.marginLeft = "-150px";
+            cart.style.width = "50px";
+            cart.style.height = "30px";
+
+            //appending elements
+
+            container.appendChild(card);
+            card.appendChild(img);
+            card.appendChild(description);
+            description.appendChild(title);
+            description.appendChild(date);
+            description.appendChild(company);
+            description.appendChild(price);
+            description.appendChild(buy_btn);
+            description.appendChild(label);
+            buy_btn.appendChild(link);
+            link.appendChild(cart);
+
+            //setting the content of elements
+            img.src = obj.imageUrl;
+            title.textContent = obj.title;
+            date.textContent = obj.date;
+            company.textContent = obj.company;
+            price.textContent = `Ksh ${obj.price}`;
+            label.textContent = "Add to cart";
+            buy_btn.setAttribute("onclick", "addToCart(this.id)");
+            cart.src = "./img/cart.png";
+            img_redirect.src = "./img/cart.png";
+          });
+        }
+        try {
+        } catch (error) {
+          // throw alert(error);
+        }
+        populateProducts();
+      }
+      let cart_arr = [];
+
+      function addToCart(object) {
+        let num = parseInt(counter.textContent);
+        counter.textContent = num + 1;
+
+        for (let i = 1; i < addedDataJSON.length + 1; i++) {
+          if (object == `buy${i}`) {
+            cart_arr.push(addedDataJSON[i - 1]);
+            console.log(cart_arr);
+          }
+        }
+      }
+
+      function deleteProductFromCart() {}
+
+      addProducts();
+
+      // ----------------------cart page---------------------------------------
+      function second() {
+        const container = document.createElement("div");
+        container.style.margin = "2rem .5rem 0";
+        container.style.padding = "1rem 0";
+        container.style.width = "90vw";
+        container.style.display = "grid";
+        container.style.alignContent = "center";
+        container.style.justifyItems = "center";
+        container.style.gridTemplateColumns = "repeat(3, 1fr)";
+        container.style.rowGap = "2rem";
+        document.body.appendChild(container);
+        const cart_redirect = document.createElement("a");
+        const img_redirect = document.createElement("img");
+        document.body.appendChild(cart_redirect);
+        cart_redirect.appendChild(img_redirect);
+        cart_redirect.style.position = "absolute";
+        cart_redirect.style.right = "0";
+        cart_redirect.style.top = "48px";
+        img_redirect.style.width = "100px";
+        cart_redirect.setAttribute("onclick", "second()");
+        cart_redirect.appendChild(counter);
+        counter.textContent = `${counter.textContent}`;
+
+        cart_arr.map((obj) => {
+          //creating elements
+          const card = document.createElement("div");
+          const description = document.createElement("div");
+          const img = document.createElement("img");
+          const title = document.createElement("p");
+          const date = document.createElement("p");
+          const company = document.createElement("p");
+          const price = document.createElement("p");
+          const buy_btn = document.createElement("button");
+          const label = document.createElement("label");
+          const cart = document.createElement("img");
+          const link = document.createElement("a");
+          buy_btn.setAttribute("id", `buy${obj.id}`);
+
+          //styling elements
+          card.style.width = "400px";
+          card.style.height = "300px";
+          description.style.border = "solid black 2px";
+          card.style.textAlign = "center";
+          img.style.width = "400px";
+          img.style.height = "180px";
+          img.style.marginBottom = "-4px";
+          title.style.fontWeight = "800";
+          title.style.fontSize = "20px";
+          title.style.marginTop = "3px";
+          title.style.marginBottom = "3px";
+          date.style.marginTop = "3px";
+          date.style.marginBottom = "3px";
+          company.style.marginTop = "3px";
+          company.style.marginBottom = "3px";
+          price.style.marginTop = "3px";
+          price.style.marginBottom = "3px";
+          buy_btn.style.backgroundColor = "darkBlue";
+          buy_btn.style.marginTop = "0";
+          buy_btn.style.marginLeft = "-150px";
+          cart.style.width = "50px";
+          cart.style.height = "30px";
+
+          //appending elements
+
+          container.appendChild(card);
+          card.appendChild(img);
+          card.appendChild(description);
+          description.appendChild(title);
+          description.appendChild(date);
+          description.appendChild(company);
+          description.appendChild(price);
+          description.appendChild(buy_btn);
+          description.appendChild(label);
+          buy_btn.appendChild(link);
+          link.appendChild(cart);
+
+          //setting the content of elements
+          img.src = obj.imageUrl;
+          title.textContent = obj.title;
+          date.textContent = obj.date;
+          company.textContent = obj.company;
+          price.textContent = `Ksh ${obj.price}`;
+          label.textContent = "Add to cart";
+          buy_btn.setAttribute("onclick", "addToCart(this.id)");
+          cart.src = "./img/cart.png";
+          img_redirect.src = "./img/cart.png";
+        });
+      }
+    </script>
+  </body>
+</html>
