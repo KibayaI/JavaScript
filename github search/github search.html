@@ -11,13 +11,14 @@
       const div = document.createElement("div");
       const input = document.createElement("input");
       const button = document.createElement("button");
-      const result = document.createElement('div')
-      const pic = document.createElement('div')
-      const details = document.createElement('div')
+      const result = document.createElement("div");
+      const pic = document.createElement("div");
+      const details = document.createElement("div");
       const profile = document.createElement("img");
       const names = document.createElement("p");
       const num_repos = document.createElement("p");
       const locations = document.createElement("p");
+      const company = document.createElement("p");
 
       document.body.appendChild(header);
       document.body.appendChild(div);
@@ -25,57 +26,58 @@
       div.appendChild(input);
       pic.appendChild(profile);
       div.appendChild(button);
-      result.appendChild(pic)
-      result.appendChild(details)
+      result.appendChild(pic);
+      result.appendChild(details);
       pic.appendChild(profile);
       details.appendChild(names);
       details.appendChild(num_repos);
       details.appendChild(locations);
+      details.appendChild(company);
 
       header.textContent = "GITHUB SEARCH TOOL";
       input.setAttribute("placeholder", "Enter user");
-      button.setAttribute("onclick", "getUsers()");
       button.textContent = "Search a GitHub user";
 
+      document.body.style.backgroundColor = "darkgreen";
+      document.body.style.color = "white";
+      document.body.style.textAlign = "center";
+      input.style.height = "40px";
+      button.style.color = "white";
+      button.style.height = "45px";
+      button.style.color = "white";
+      button.style.marginLeft = "10px";
+      button.style.border = "4px solid white";
+      button.style.backgroundColor = "black";
+      result.style.height = "500px";
+      result.style.marginTop = "2rem";
+      result.style.display = "grid";
+      result.style.gridTemplateColumns = "2fr 5fr";
+      profile.style.width = "150px";
+      profile.style.height = "150px";
+      profile.style.borderRadius = "50%";
+      details.style.textAlign = "start";
 
-      document.body.style.backgroundColor = 'darkgreen'
-      document.body.style.color = 'white'
-      document.body.style.textAlign = 'center'
-      input.style.height = '40px'
-      button.style.color = 'white'
-      button.style.height = '45px'
-      button.style.color = 'white'
-      button.style.marginLeft = '10px'
-      button.style.border = '4px solid white'
-      button.style.backgroundColor = 'black'
-      result.style.height = '500px'
-      result.style.marginTop = '2rem'
-      result.style.width = '100%'
-      result.style.display = 'grid'
-      result.style.gridTemplateColumns = '2fr 5fr'
-      profile.style.width = '150px'
-      profile.style.height = '150px'
-      profile.style.borderRadius = '50%'
-      details.style.textAlign = 'start'
-  
-
-
-      
-
-      async function getUsers() {
+      button.addEventListener("click", async function() {
         const user = input.value;
-        console.log(user);
-        const fetcher = await fetch(
-          `https://api.github.com/users/${user}`
-        ).then((response) =>
-          response.json().then((response) => {
+        const fetcher = await fetch(`https://api.github.com/users/${user}`)
+          .then((response) => response.json())
+          .then((response) => {
             profile.src = response.avatar_url;
-            names.textContent = response.name
-            num_repos.textContent = `${response.public_repos} repos`
-            locations.textContent = response.location
-          })
-        );
-      }
+            names.textContent = `Name: ${response.name}`;
+            num_repos.textContent = `${response.public_repos} repos`;
+            locations.textContent = `Location: ${response.location}`;
+            // names.textContent = response.name;
+            // num_repos.textContent = response.public_repos;
+            // locations.textContent = response.location;
+            company.textContent = `Company: ${response.company}`;
+          });
+      });
+
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          button.click();
+        }
+      });
     </script>
   </body>
 </html>
