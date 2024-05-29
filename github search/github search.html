@@ -57,7 +57,7 @@
       profile.style.borderRadius = "50%";
       details.style.textAlign = "start";
 
-      button.addEventListener("click", async function() {
+      button.addEventListener("click", async function () {
         const user = input.value;
         const fetcher = await fetch(`https://api.github.com/users/${user}`)
           .then((response) => response.json())
